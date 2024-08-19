@@ -11,12 +11,16 @@ function guessTheNumber() {
     usersGuess = prompt("What number do you think?")
     usersGuess = usersGuess.trim()
     usersGuess = Number(usersGuess)
-    if (usersGuess < chosenNumber) {
+    if (usersGuess < chosenNumber && usersGuess <= 20 && usersGuess >= 1) {
       alert("Incorrect, too small.")
-    } else if (usersGuess > chosenNumber) {
+    } else if (usersGuess > chosenNumber && usersGuess <= 20 && usersGuess >= 1) {
       alert("Incorrect, too big.")
     } else if (usersGuess == chosenNumber) {
       alert("Correct, well done!")
+    } else if (usersGuess > 20 || usersGuess < 1) {
+      alert("Your number was outside the range. Please try again with a number from 1 to 20")
+    } else {
+      alert("Something went wrong please try again")
     }
   }
 }
