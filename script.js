@@ -1,3 +1,4 @@
+let scoreboard = []
 function guessTheNumber() {
   let name = prompt("What is your name?")
   alert("Hello " + name + "! We are going to play a game. I will think of a number from 1 to 20 and you will have to guess it. Take as many turns as you need.")
@@ -5,7 +6,6 @@ function guessTheNumber() {
   chosenNumber = chosenNumber + 1
   let usersGuess = 0
   let attempts = 0
-  alert(chosenNumber)
   while (usersGuess != chosenNumber) {
     attempts = attempts + 1
     usersGuess = prompt("What number do you think?")
@@ -23,4 +23,8 @@ function guessTheNumber() {
       alert("Something went wrong please try again")
     }
   }
+  scoreboard.push(name + ": " + attempts + " ")
+}
+function showScoreboard() {
+  alert(scoreboard)
 }
