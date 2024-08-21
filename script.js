@@ -1,30 +1,40 @@
 let scoreboard = []
 function guessTheNumber() {
+  //Asks the user thier name then welcomes them and indroduces the game
   let name = prompt("What is your name?")
   alert("Hello " + name + "! We are going to play a game. I will think of a number from 1 to 20 and you will have to guess it. Take as many turns as you need.")
+  //The computer chooses a random number for the user to guess. As the range of *20 is 0 - 19 it adds one on to make it a valid guess.
   let chosenNumber = Math.floor(Math.random() * 20)
   chosenNumber = chosenNumber + 1
+  //creates varibles and their values before they are changed in later code
   let usersGuess = 0
   let attempts = 0
+  let lowerLimit = 1
+  let upperLimit = 20
+  //Repeats the game until the user guesses the number correctly and adds one to the round counter every repeat
   while (usersGuess != chosenNumber) {
     attempts = attempts + 1
+    //Asks the user their guess then takes away spaces and turns it into a number
     usersGuess = prompt("What number do you think?")
     usersGuess = usersGuess.trim()
     usersGuess = Number(usersGuess)
-    if (usersGuess < chosenNumber && usersGuess <= 20 && usersGuess >= 1) {
+    //Compares the users guess to the answer and outputs accordingly. If there is an answer outside the range or is not a number it will output an error message.
+    if (usersGuess < chosenNumber && usersGuess <= upperLimit && usersGuess >= lowerLimit) {
       alert("Incorrect, too small.")
-    } else if (usersGuess > chosenNumber && usersGuess <= 20 && usersGuess >= 1) {
+    } else if (usersGuess > chosenNumber && usersGuess <= upperLimit && usersGuess >= lowerLimit) {
       alert("Incorrect, too big.")
     } else if (usersGuess == chosenNumber) {
       alert("Correct, well done!")
-    } else if (usersGuess > 20 || usersGuess < 1) {
+    } else if (usersGuess > upperLimit || usersGuess < lowerLimit) {
       alert("Your number was outside the range. Please try again with a number from 1 to 20")
     } else {
       alert("Something went wrong please try again")
     }
   }
-  scoreboard.push(name + ": " + attempts + " ")
+  //Adds onto the scoreboard the users inputted name and the number of guesses it took for them to guess the number on a new line
+  scoreboard.push("\n" + name + ": " + attempts)
 }
+//Shows the scoreboard
 function showScoreboard() {
-  alert(scoreboard)
+  alert("The Scoreboard: the number beside someone's name is the number of guesses it took them to guess the number." + scoreboard)
 }
