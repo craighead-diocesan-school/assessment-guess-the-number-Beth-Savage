@@ -9,11 +9,10 @@ function guessTheNumber() {
   let usersName = prompt("What is your name?")
   alert("Hello " + usersName + "! We are going to play a game. I will think of a number from " + lowerLimit + " to " + upperLimit + " and you will have to guess it. Take as many turns as you need.")
   //Math.random makes the computer choose a random number for the user to guess. As the range of *upperLimit (in this scenario *20) is 0 - 19 it then adds one on to make it a valid number inside the range.
-  let chosenNumber = Math.floor(Math.random() * upperLimit)
-  chosenNumber = chosenNumber + 1
+  let chosenNumber = Math.floor(Math.random() * (upperLimit - lowerLimit + 1)) + lowerLimit
   //The while loop will repeat the game until the user guesses the number correctly and adds one to the round counter every repeat
   while (usersGuess != chosenNumber) {
-    attempts = attempts + 1
+    attempts++
     //usersGuess = prompt asks the user their guess then uses .trim() to take away spaces and usersGuess = Number to turn it into a number
     usersGuess = prompt("What number do you think?")
     usersGuess = usersGuess.trim()
@@ -26,7 +25,7 @@ function guessTheNumber() {
     } else if (usersGuess == chosenNumber) {
       alert("Correct, well done!")
     } else if (usersGuess > upperLimit || usersGuess < lowerLimit) {
-      alert("Your number was outside the range. Please try again with a number from 1 to 20")
+      alert("Your number was outside the range. Please try again with a number from " + lowerLimit + " to " + upperLimit)
     } else {
       alert("Something went wrong please try again")
     }
